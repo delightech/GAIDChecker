@@ -23,14 +23,19 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // level up
-        AdjustEvent event = new AdjustEvent("pqb3cq");
-        Adjust.trackEvent(event);
+        int i = 0;
+        while(i < 20) {
+            // level up
+            AdjustEvent event = new AdjustEvent("pqb3cq");
+            Adjust.trackEvent(event);
 
-        // purchase
-        event = new AdjustEvent("cho60f");
-        event.setRevenue(100, "JPY");
-        Adjust.trackEvent(event);
+            // purchase
+            event = new AdjustEvent("cho60f");
+            event.setRevenue(100, "JPY");
+            Adjust.trackEvent(event);
+            i++;
+            System.out.println(i);
+        }
 
         // AdvertisingIdClient cannot be called in the main thread.
         AsyncTask<Void, Void, String> task = new AdIdTask(this);
