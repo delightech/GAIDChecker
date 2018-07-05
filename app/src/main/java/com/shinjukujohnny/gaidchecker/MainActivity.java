@@ -8,6 +8,8 @@ import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.adjust.sdk.Adjust;
+import com.adjust.sdk.AdjustEvent;
 import com.google.android.gms.ads.identifier.AdvertisingIdClient;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -20,6 +22,16 @@ public class MainActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // level up
+        AdjustEvent event = new AdjustEvent("pqb3cq");
+        Adjust.trackEvent(event);
+
+        // purchase
+        event = new AdjustEvent("cho60f");
+        event.setRevenue(100, "JPY");
+        Adjust.trackEvent(event);
+
         // AdvertisingIdClient cannot be called in the main thread.
         AsyncTask<Void, Void, String> task = new AdIdTask(this);
         task.execute();

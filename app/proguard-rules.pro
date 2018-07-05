@@ -15,3 +15,13 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+-keep class com.adjust.sdk.plugin.MacAddressUtil {
+    java.lang.String getMacAddress(android.content.Context);
+ }
+-keep class com.adjust.sdk.plugin.AndroidIdUtil {
+    java.lang.String getAndroidId(android.content.Context);
+ }
