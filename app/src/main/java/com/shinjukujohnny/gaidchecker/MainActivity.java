@@ -3,6 +3,7 @@ package com.shinjukujohnny.gaidchecker;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.EditText;
@@ -36,6 +37,12 @@ public class MainActivity extends AppCompatActivity  {
             i++;
             System.out.println(i);
         }
+        String udid =
+                Settings.Secure.getString(this.getContentResolver(), Settings.System.ANDROID_ID);
+
+        System.out.println("###################");
+        System.out.println(udid);
+        System.out.println("###################");
 
         // AdvertisingIdClient cannot be called in the main thread.
         AsyncTask<Void, Void, String> task = new AdIdTask(this);
